@@ -1,4 +1,4 @@
 'use strict';
-import client = require('./client/powerBIClient');
+export * from './client/powerBIClient';
+export * from './client/models';
 export * from './core/powerBIToken';
-export let PowerBIClient = client;

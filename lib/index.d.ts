@@ -1,3 +1,3 @@
-import client = require('./client/powerBIClient');
+export * from './client/powerBIClient';
+export * from './client/models';
 export * from './core/powerBIToken';
-export declare let PowerBIClient: typeof client;
