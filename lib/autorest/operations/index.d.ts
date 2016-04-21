@@ -327,6 +327,8 @@ export interface Imports {
      * 
      * @param {string} workspaceId The workspace id
      * 
+     * @param {string} datasetDisplayName The display name of the dataset
+     * 
      * @param {object} importInfo The import to post
      * 
      * @param {string} [importInfo.filePath] The file path to import
@@ -334,8 +336,6 @@ export interface Imports {
      * @param {string} [importInfo.connectionType] The import connection type
      * 
      * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.datasetDisplayName] The display name of the dataset
      * 
      * @param {string} [options.nameConflict] Determines what to do if a dataset
      * with the same name already exists
@@ -346,8 +346,8 @@ export interface Imports {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    postImport(collectionName: string, workspaceId: string, importInfo: models.ImportInfo, options: { datasetDisplayName? : string, nameConflict? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportModel>): void;
-    postImport(collectionName: string, workspaceId: string, importInfo: models.ImportInfo, callback: ServiceCallback<models.ImportModel>): void;
+    postImport(collectionName: string, workspaceId: string, datasetDisplayName: string, importInfo: models.ImportInfo, options: { nameConflict? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportModel>): void;
+    postImport(collectionName: string, workspaceId: string, datasetDisplayName: string, importInfo: models.ImportInfo, callback: ServiceCallback<models.ImportModel>): void;
 
     /**
      * @summary Gets the import metadata for the specifed import id

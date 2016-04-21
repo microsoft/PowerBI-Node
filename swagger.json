@@ -665,7 +665,7 @@
                     {
                         "name": "datasetDisplayName",
                         "in": "query",
-                        "required": false,
+                        "required": true,
                         "description": "The display name of the dataset",
                         "type": "string"
                     },
