@@ -1,11 +1,12 @@
 {
   "name": "powerbi-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node client library for Power BI API",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive",
+    "postinstall": "typings install && tsc"
   },
   "repository": {
     "type": "git",
