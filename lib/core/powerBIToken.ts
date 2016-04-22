@@ -1,11 +1,12 @@
-'use strict'
-
-var jwt = require('jwt-simple');
+import * as jwt from 'jwt-simple';
+import {Util as util} from './util';
 
 export class PowerBIToken {
     private claims: any;
+    private expiration: Date;
 
-    constructor() {
+    constructor(expiration?: Date) {
+        this.expiration = expiration;
         this.claims = {
             ver: '0.1.0',
             aud: 'https://analysis.windows.net/powerbi/api',
@@ -14,38 +15,35 @@ export class PowerBIToken {
     }
 
     public static createDevToken(workspaceCollectionName: string, workspaceId: string, expiration: Date = null): PowerBIToken {
-        var token = new PowerBIToken();
+        var token = new PowerBIToken(expiration);
         token.addClaim('type', 'dev');
         token.addClaim('wcn', workspaceCollectionName);
         token.addClaim('wid', workspaceId);
-        token.setTokenExpiration(expiration);
 
         return token;
     }
 
     public static createProvisionToken(workspaceCollectionName: string, expiration: Date = null): PowerBIToken {
-        var token = new PowerBIToken();
+        var token = new PowerBIToken(expiration);
         token.addClaim('type', 'provision');
         token.addClaim('wcn', workspaceCollectionName);
-        token.setTokenExpiration(expiration);
 
         return token;
     }
 
     public static createReportEmbedToken(workspaceCollectionName: string, workspaceId: string, reportId: string, expiration: Date = null): PowerBIToken {
-        var token = new PowerBIToken();
-        token.addClaim('type', 'provision');
+        var token = new PowerBIToken(expiration);
+        token.addClaim('type', 'embed');
         token.addClaim('wcn', workspaceCollectionName);
         token.addClaim('wid', workspaceId);
         token.addClaim('rid', reportId);
-        token.setTokenExpiration(expiration);
 
         return token;
     }
 
-    private setTokenExpiration(expiration: Date) {
-        var nowSeconds = PowerBIToken.getUnixTime(new Date());
-        var expirationSeconds = expiration ? PowerBIToken.getUnixTime(expiration) : nowSeconds + 3600
+    private setTokenExpiration() {
+        var nowSeconds = util.getUnixTime(new Date());
+        var expirationSeconds = this.expiration ? util.getUnixTime(this.expiration) : nowSeconds + 3600
 
         if (expirationSeconds <= nowSeconds) {
             throw new Error('Token expiration must be in the future');
@@ -59,11 +57,9 @@ export class PowerBIToken {
         this.claims[key] = value;
     }
 
-    private static getUnixTime(date: Date): number {
-        return date.getTime() / 1000 | 0;
-    }
-
     public generate(accessKey: string): string {
+        this.setTokenExpiration();
+
         return jwt.encode(this.claims, accessKey);
     }
 }
