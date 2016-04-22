@@ -1,9 +1,8 @@
 {
   "ambientDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160317120654",
+    "jwt-simple": "registry:dt/jwt-simple#0.2.0+20160316155526",
     "mocha": "registry:dt/mocha#2.2.5+20160317120654",
     "node": "registry:dt/node#4.0.0+20160412142033"
-  },
-  "devDependencies": {
-    "chai": "registry:npm/chai#3.5.0+20160415060238"
   }
 }

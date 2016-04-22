@@ -1,10 +1,16 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "allowJs": true,
-        "declaration": true
+        "target": "es5",
+        "allowJs": false,
+        "declaration": true,
+        "moduleResolution": "node",
+        "sourceMap": true
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "lib/autorest",
+        "typings/browser.d.ts",
+        "typings/browser"
     ]
 }
