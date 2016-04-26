@@ -6,6 +6,8 @@ lib/client/**/*.d.ts
 lib/core/**/*.js
 lib/core/**/*.js.map
 lib/core/**/*.d.ts
+lib/index.js
+lib/index.js.map
 test/**/*.js
 test/**/*.js.map
 test/**/*.d.ts
