@@ -1,5 +1,7 @@
 node_modules/
 typings/
+lib/index.js
+lib/index.js.map
 lib/client/**/*.js
 lib/client/**/*.js.map
 lib/client/**/*.d.ts
