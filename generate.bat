@@ -1,5 +1,8 @@
-pushd "%~dp0"
-rm -rf client
-AutoRest.exe -CodeGenerator NodeJS -Modeler Swagger -Input swagger.json -Namespace powerbi -output lib/autorest -name PowerBIClient -AddCredentials
-popd
-pause
+setlocal
+
+set scriptfolder=%~dp0
+set outfolder=%scriptfolder%lib\autorest
+rmdir /s /q  %outfolder%
+AutoRest.exe -CodeGenerator NodeJS -Modeler Swagger -Input swagger.json -Namespace powerbi -output %outfolder% -name PowerBIClient -AddCredentials
+
+endlocal
