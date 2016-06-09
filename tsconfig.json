@@ -10,7 +10,7 @@
     "exclude": [
         "node_modules",
         "lib/autorest",
-        "typings/browser.d.ts",
-        "typings/browser"
+        "typings/index.d.ts",
+        "typings/global"
     ]
 }
