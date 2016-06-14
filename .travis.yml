@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+    - "4.4"
+install: 
+    - npm run init
+    - npm install
+script: 
+    - npm test
