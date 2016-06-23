@@ -1,5 +1,5 @@
 export class Util {
     public static getUnixTime(date: Date): number {
-        return date.getTime() / 1000 | 0;
+        return Math.floor(date.getTime() / 1000);
     }
 }
