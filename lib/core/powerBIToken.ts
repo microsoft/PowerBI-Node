@@ -10,7 +10,7 @@ export class PowerBIToken {
         this.claims = {
             ver: '0.1.0',
             aud: 'https://analysis.windows.net/powerbi/api',
-            iss: 'PowerBISDK'
+            iss: 'Power BI Node SDK'
         };
     }
 
