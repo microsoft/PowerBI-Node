@@ -1180,7 +1180,7 @@
             "type": "object",
             "description": "A Power BI Workspace",
             "properties": {
-                "WorkspaceId": {
+                "workspaceId": {
                     "type": "string",
                     "description": "The workspace id"
                 },
