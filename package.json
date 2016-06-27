@@ -5,8 +5,9 @@
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "preinit": "npm install -g typings typescript && npm install",
-    "init": "typings install && tsc",
+    "typings": "typings install",
+    "build": "tsc",
+    "init": "npm run typings && npm run build",
     "test": "mocha --recursive"
   },
   "repository": {
@@ -32,7 +33,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.0"
   },
   "directories": {
     "test": "test"
