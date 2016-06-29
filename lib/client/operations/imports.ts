@@ -73,7 +73,7 @@ export class Imports implements operations.Imports {
         }
 
         // Construct URL
-        var requestUrl = this.client['baseUri'] + '//beta/collections/{collectionName}/workspaces/{workspaceId}/imports';
+        var requestUrl = this.client['baseUri'] + '//v1.0/collections/{collectionName}/workspaces/{workspaceId}/imports';
         requestUrl = requestUrl.replace('{collectionName}', encodeURIComponent(collectionName));
         requestUrl = requestUrl.replace('{workspaceId}', encodeURIComponent(workspaceId));
 

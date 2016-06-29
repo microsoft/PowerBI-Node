@@ -8,32 +8,14 @@ export class PowerBIToken {
     constructor(expiration?: Date) {
         this.expiration = expiration;
         this.claims = {
-            ver: '0.1.0',
+            ver: '0.2.0',
             aud: 'https://analysis.windows.net/powerbi/api',
             iss: 'Power BI Node SDK'
         };
     }
 
-    public static createDevToken(workspaceCollectionName: string, workspaceId: string, expiration: Date = null): PowerBIToken {
-        var token = new PowerBIToken(expiration);
-        token.addClaim('type', 'dev');
-        token.addClaim('wcn', workspaceCollectionName);
-        token.addClaim('wid', workspaceId);
-
-        return token;
-    }
-
-    public static createProvisionToken(workspaceCollectionName: string, expiration: Date = null): PowerBIToken {
-        var token = new PowerBIToken(expiration);
-        token.addClaim('type', 'provision');
-        token.addClaim('wcn', workspaceCollectionName);
-
-        return token;
-    }
-
     public static createReportEmbedToken(workspaceCollectionName: string, workspaceId: string, reportId: string, expiration: Date = null): PowerBIToken {
         var token = new PowerBIToken(expiration);
-        token.addClaim('type', 'embed');
         token.addClaim('wcn', workspaceCollectionName);
         token.addClaim('wid', workspaceId);
         token.addClaim('rid', reportId);

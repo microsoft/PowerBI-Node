@@ -7,7 +7,7 @@ import {ServiceClientCredentials, ServiceClientOptions} from 'ms-rest';
 export class PowerBIClient extends AutorestClient {
     public imports:operations.Imports;
     
-    constructor(credentials: ServiceClientCredentials, baseUri: string, options?: ServiceClientOptions) {
+    constructor(credentials: ServiceClientCredentials, baseUri: string='https://api.powerbi.com', options?: ServiceClientOptions) {
         super(credentials, baseUri, options);
         this.imports = new operations.Imports(this);
     }
