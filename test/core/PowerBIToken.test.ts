@@ -1,21 +1,20 @@
-import * as mocha from 'mocha';
 import * as chai from 'chai';
 import * as powerbi from '../../lib';
 import * as jwt from 'jwt-simple';
 
 let expect = chai.expect;
 
-describe('PowerBI Token', () => {
+describe('Power BI Token', () => {
     const version: string = '0.1.0';
-    const issuer: string = 'PowerBISDK';
+    const issuer: string = 'Power BI Node SDK';
     const resource: string = 'https://analysis.windows.net/powerbi/api';
     const workspacCollection: string = 'TestCollection';
     const workspaceId: string = 'fd41b1db-9e26-4103-99a7-f9ad336b99a7';
     const reportId: string = 'fe607ad3-97bf-4dd5-98eb-db4a4d5de4e0';
-    const accessKey: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+    const accessKey: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 
     it('is defined', () => {
-        expect(powerbi.PowerBIToken).not.to.be.undefined;
+        expect(powerbi.PowerBIToken).to.exist;
     });
 
     describe('Generic Tokens', () => {
@@ -53,7 +52,7 @@ describe('PowerBI Token', () => {
                 hasError = true;
                 expect(err.message).to.equal('Token expiration must be in the future');
             }
-            
+
             expect(hasError).to.be.true;
         });
     });
