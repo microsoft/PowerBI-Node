@@ -4,7 +4,7 @@
  * regenerated.
  */
 
-import { ServiceClientCredentials, ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
 import * as operations from "./operations";
 
 declare class PowerBIClient {
