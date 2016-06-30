@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Microsoft/PowerBI-Node.svg?branch=add-travis-ci)](https://travis-ci.org/Microsoft/PowerBI-Node)
+
 # PowerBI-Node
 Node SDK and client library for the Power BI Embedded REST APIs.
 
