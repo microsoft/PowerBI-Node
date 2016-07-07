@@ -12,6 +12,7 @@ describe('Power BI Token', () => {
     const workspaceId: string = 'fd41b1db-9e26-4103-99a7-f9ad336b99a7';
     const reportId: string = 'fe607ad3-97bf-4dd5-98eb-db4a4d5de4e0';
     const accessKey: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    const username: string = 'TestUser';
 
     it('is defined', () => {
         expect(powerbi.PowerBIToken).to.exist;
@@ -82,7 +83,7 @@ describe('Power BI Token', () => {
             let exp = nbf + 3600;
             let expiration = new Date(exp * 1000);
 
-            let embedToken = powerbi.PowerBIToken.createReportEmbedToken(workspacCollection, workspaceId, reportId, expiration);
+            let embedToken = powerbi.PowerBIToken.createReportEmbedToken(workspacCollection, workspaceId, reportId, username, 'TestRole', expiration);
             let token = embedToken.generate(accessKey);
             let decoded = jwt.decode(token, accessKey);
 
@@ -94,6 +95,36 @@ describe('Power BI Token', () => {
             expect(decoded.rid).to.equal(reportId);
             expect(decoded.nbf).to.equal(nbf);
             expect(decoded.exp).to.equal(exp);
+            expect(decoded.username).to.equal(username);
+        });
+        
+        it('are created with multiple RLS roles', () => {
+            let nbf = powerbi.Util.getUnixTime(new Date());
+            let exp = nbf + 3600;
+            let expiration = new Date(exp * 1000);
+            let roles = ['TestRole1', 'TestRole2'];
+
+            let embedToken = powerbi.PowerBIToken.createReportEmbedToken(workspacCollection, workspaceId, reportId, username, roles, expiration);
+            let token = embedToken.generate(accessKey);
+            let decoded = jwt.decode(token, accessKey);
+
+            expect(decoded.username).to.equal(username);
+            expect(decoded.roles).to.eql(roles);
+        });
+
+        it('fail to create when RLS username is empty and roles is not', () => {
+            let nbf = powerbi.Util.getUnixTime(new Date());
+            let exp = nbf + 3600;
+            let expiration = new Date(exp * 1000);
+            let role = 'TestRole1';
+            let badUsernames = [null, undefined, ''];
+
+            badUsernames.forEach(badUsername => {
+                expect(powerbi.PowerBIToken.createReportEmbedToken.bind(powerbi.PowerBIToken, workspacCollection, workspaceId, reportId, badUsername, role, expiration))
+                    .to
+                    .throw('Cannot have an empty or null Username claim with the non-empty Roles claim');   
+                }
+            );
         });
     });
 });

@@ -14,11 +14,25 @@ export class PowerBIToken {
         };
     }
 
-    public static createReportEmbedToken(workspaceCollectionName: string, workspaceId: string, reportId: string, expiration: Date = null): PowerBIToken {
+    public static createReportEmbedToken(workspaceCollectionName: string, workspaceId: string, reportId: string, username: string = null, roles: string|string[] = null, expiration: Date = null): PowerBIToken {
+        
+        if (roles && !username)
+        {
+            throw new Error('Cannot have an empty or null Username claim with the non-empty Roles claim');
+        }
+        
         var token = new PowerBIToken(expiration);
         token.addClaim('wcn', workspaceCollectionName);
         token.addClaim('wid', workspaceId);
         token.addClaim('rid', reportId);
+
+        if(username != null) {
+            token.addClaim('username', username);
+
+            if(roles != null) {
+                token.addClaim('roles', roles);
+            }
+        }
 
         return token;
     }
