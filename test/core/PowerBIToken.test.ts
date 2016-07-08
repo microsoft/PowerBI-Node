@@ -96,6 +96,7 @@ describe('Power BI Token', () => {
             expect(decoded.nbf).to.equal(nbf);
             expect(decoded.exp).to.equal(exp);
             expect(decoded.username).to.equal(username);
+            expect(decoded.roles).to.equal('TestRole');
         });
         
         it('are created with multiple RLS roles', () => {
