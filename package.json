@@ -5,9 +5,8 @@
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "typings": "typings install",
-    "build": "tsc",
-    "init": "npm run typings && npm run build",
+    "precontrib": "npm install -g typings typescript && npm install",
+    "contrib": "typings install && tsc",
     "test": "mocha --recursive"
   },
   "repository": {
