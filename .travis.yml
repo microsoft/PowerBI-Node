@@ -1,12 +1,12 @@
 language: node_js
 node_js:
 - '4.4'
-install:
-- npm install
-- npm run init
+before_install:
+- npm run contrib
 script:
 - npm test
 deploy:
+  skip_cleanup: true
   provider: npm
   email: nugetpowerbi@microsoft.com
   api_key:
