@@ -2,9 +2,9 @@
 Node SDK and client library for the Power BI Embedded REST APIs.
 
 [![Build Status](https://img.shields.io/travis/Microsoft/PowerBI-Node/master.svg)](https://travis-ci.org/Microsoft/PowerBI-Node)
-![NPM Version](https://img.shields.io/npm/v/powerbi-api.svg)
-![NPM Total Downloads](https://img.shields.io/npm/dt/powerbi-api.svg)
-![NPM Monthly Downloads](https://img.shields.io/npm/dm/powerbi-api.svg)
+[![NPM Version](https://img.shields.io/npm/v/powerbi-api.svg)](https://www.npmjs.com/package/powerbi-api)
+[![NPM Total Downloads](https://img.shields.io/npm/dt/powerbi-api.svg)](https://www.npmjs.com/package/powerbi-api)
+[![NPM Monthly Downloads](https://img.shields.io/npm/dm/powerbi-api.svg)](https://www.npmjs.com/package/powerbi-api)
 
 ## Installation
 ```
