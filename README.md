@@ -1,7 +1,10 @@
-[![Build Status](https://travis-ci.org/Microsoft/PowerBI-Node.svg?branch=add-travis-ci)](https://travis-ci.org/Microsoft/PowerBI-Node)
-
 # PowerBI-Node
 Node SDK and client library for the Power BI Embedded REST APIs.
+
+[![Build Status](https://img.shields.io/travis/Microsoft/PowerBI-Node/master.svg)](https://travis-ci.org/Microsoft/PowerBI-Node)
+![NPM Version](https://img.shields.io/npm/v/powerbi-api.svg)
+![NPM Total Downloads](https://img.shields.io/npm/dt/powerbi-api.svg)
+![NPM Monthly Downloads](https://img.shields.io/npm/dm/powerbi-api.svg)
 
 ## Installation
 ```
