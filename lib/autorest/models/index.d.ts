@@ -320,3 +320,106 @@ export interface Workspace {
     workspaceId?: string;
     workspaceCollectionName?: string;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the ODataResponseListGateway class.
+ * @constructor
+ * Odata response wrapper for a Power BI Gateways list
+ * @member {string} [odatacontext]
+ * 
+ * @member {array} [value] The Gatewayss
+ * 
+ */
+export interface ODataResponseListGateway {
+    odatacontext?: string;
+    value?: Gateway[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Gateway class.
+ * @constructor
+ * A Power BI Gateway
+ * @member {string} [id] The gateway id
+ * 
+ * @member {string} [name] The gateway name
+ * 
+ * @member {string} [type] The gateway type
+ * 
+ * @member {object} [publicKey] The gateway name
+ * 
+ * @member {string} [publicKey.exponent] The public key exponent
+ * 
+ * @member {string} [publicKey.modulud] The public key  modulus
+ * 
+ */
+export interface Gateway {
+    id?: string;
+    name?: string;
+    type?: string;
+    publicKey?: GatewayPublicKey;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayPublicKey class.
+ * @constructor
+ * A Power BI Gateway Public Key
+ * @member {string} [exponent] The public key exponent
+ * 
+ * @member {string} [modulud] The public key  modulus
+ * 
+ */
+export interface GatewayPublicKey {
+    exponent?: string;
+    modulud?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkspaceId class.
+ * @constructor
+ * A Power BI Workspace id
+ * @member {string} [id] The workspace id
+ * 
+ */
+export interface WorkspaceId {
+    id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ODataResponseString class.
+ * @constructor
+ * Odata response wrapper for a string
+ * @member {string} [odatacontext]
+ * 
+ * @member {string} [value] The returned value
+ * 
+ */
+export interface ODataResponseString {
+    odatacontext?: string;
+    value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateGatewayRequest class.
+ * @constructor
+ * The gateway info
+ * @member {string} [name] The gateway name
+ * 
+ * @member {string} [publicKey] The gateway public key
+ * 
+ * @member {string} [annotation] The gateway annotation
+ * 
+ * @member {array} [workspaces] The workspace id to add the gateway to
+ * 
+ */
+export interface CreateGatewayRequest {
+    name?: string;
+    publicKey?: string;
+    annotation?: string;
+    workspaces?: WorkspaceId[];
+}

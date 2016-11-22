@@ -537,7 +537,7 @@
                 "deprecated": false
             }
         },
-        "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/gateways/{gatewayId}/datasources/{datasourceId}": {
+    "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/gateways/{gatewayId}/datasources/{datasourceId}": {
             "patch": {
                 "tags": [
                     "Gateways"
@@ -585,6 +585,186 @@
                         "schema": {
                             "$ref": "#/definitions/Object"
                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/beta/collections/{collectionName}/gateways": {
+            "get": {
+                "tags": [
+                    "Gateways"
+                ],
+                "operationId": "Gateways_GetCollectionGateways",
+                "summary": "Returns a list of gateways for the workspace collection",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ODataResponse[List[Gateway]]"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Gateways"
+                ],
+                "summary": "Creates a new gateway",
+                "operationId": "Gateways_PostGateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "createGatewayRequest",
+                        "in": "body",
+                        "description": "The gateway request to post",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateGatewayRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/ODataResponse[String]"
+                        }
+                    }
+                }
+            }
+        },
+        "/beta/collections/{collectionName}/workspaces/{workspaceId}/gateways": {
+            "get": {
+                "tags": [
+                    "Gateways"
+                ],
+                "operationId": "Gateways_GetWorkspaceGateways",
+                "summary": "Returns a list of gateways for the specified workspace",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "workspaceId",
+                        "in": "path",
+                        "required": true,
+                        "description": "The workspace id",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ODataResponse[List[Gateway]]"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/beta/collections/{collectionName}/gateways/{gatewayId}": {
+            "get": { 
+                "tags": [
+                    "Gateways"
+                ],
+                "operationId": "Gateways_GetGatewayById",
+                "summary": "Returns the specified gateway",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Gateway"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Gateways"
+                ],
+                "operationId": "Gateways_DeleteGatewayById",
+                "summary": "Delete a gateway by id",
+                "consumes": [ ],
+                "produces": [ ],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gatewayId",
+                        "in": "path",
+                        "description": "The gateway id",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1154,6 +1334,22 @@
                 }
             }
         },
+        "ODataResponse[List[Gateway]]": {
+            "type": "object",
+            "description": "Odata response wrapper for a Power BI Gateways list",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "description": "The Gatewayss",
+                    "items": {
+                        "$ref": "#/definitions/Gateway"
+                    }
+                }
+            }
+        },
         "Report": {
             "type": "object",
             "description": "A Power BI Report",
@@ -1187,6 +1383,90 @@
                 "workspaceCollectionName": {
                     "type": "string",
                     "description": "The workspace collection name"
+                }
+            }
+        },
+        "GatewayPublicKey": {
+            "type": "object",
+            "description": "A Power BI Gateway Public Key",
+            "properties": {
+                "exponent": {
+                    "type": "string",
+                    "description": "The public key exponent"
+                },
+                "modulud": {
+                    "type": "string",
+                    "description": "The public key  modulus"
+                }
+            }
+        },
+        "Gateway": {
+            "type": "object",
+            "description": "A Power BI Gateway",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The gateway id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The gateway name"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The gateway type"
+                },
+                "publicKey": {
+                    "$ref": "#/definitions/GatewayPublicKey",
+                    "description": "The gateway name"
+                }
+            }
+        },
+        "WorkspaceId": {
+            "type": "object",
+            "description": "A Power BI Workspace id",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The workspace id"
+                }
+            }
+        },
+        "ODataResponse[String]": {
+            "type": "object",
+            "description": "Odata response wrapper for a string",
+            "properties": {
+                "odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The returned value"
+                }
+            }
+        },
+        "CreateGatewayRequest": {
+            "type": "object",
+            "description": "The gateway info",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The gateway name"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The gateway public key"
+                },
+                "annotation": {
+                    "type": "string",
+                    "description": "The gateway annotation"
+                },
+                "workspaces": {
+                    "type": "array",
+                    "items": { 
+                        "$ref": "#/definitions/WorkspaceId"
+                    },
+                    "description": "The workspace id to add the gateway to"
                 }
             }
         }

@@ -292,6 +292,103 @@ export interface Gateways {
      */
     patchDatasource(collectionName: string, workspaceId: string, gatewayId: string, datasourceId: string, datasourceDelta: any, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     patchDatasource(collectionName: string, workspaceId: string, gatewayId: string, datasourceId: string, datasourceDelta: any, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Returns a list of gateways for the workspace collection
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCollectionGateways(collectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ODataResponseListGateway>): void;
+    getCollectionGateways(collectionName: string, callback: ServiceCallback<models.ODataResponseListGateway>): void;
+
+    /**
+     * @summary Creates a new gateway
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {object} createGatewayRequest The gateway request to post
+     * 
+     * @param {string} [createGatewayRequest.name] The gateway name
+     * 
+     * @param {string} [createGatewayRequest.publicKey] The gateway public key
+     * 
+     * @param {string} [createGatewayRequest.annotation] The gateway annotation
+     * 
+     * @param {array} [createGatewayRequest.workspaces] The workspace id to add
+     * the gateway to
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    postGateway(collectionName: string, createGatewayRequest: models.CreateGatewayRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ODataResponseString>): void;
+    postGateway(collectionName: string, createGatewayRequest: models.CreateGatewayRequest, callback: ServiceCallback<models.ODataResponseString>): void;
+
+    /**
+     * @summary Returns a list of gateways for the specified workspace
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {string} workspaceId The workspace id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getWorkspaceGateways(collectionName: string, workspaceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ODataResponseListGateway>): void;
+    getWorkspaceGateways(collectionName: string, workspaceId: string, callback: ServiceCallback<models.ODataResponseListGateway>): void;
+
+    /**
+     * @summary Returns the specified gateway
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {string} gatewayId The gateway id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getGatewayById(collectionName: string, gatewayId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gateway>): void;
+    getGatewayById(collectionName: string, gatewayId: string, callback: ServiceCallback<models.Gateway>): void;
+
+    /**
+     * @summary Delete a gateway by id
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {string} gatewayId The gateway id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteGatewayById(collectionName: string, gatewayId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteGatewayById(collectionName: string, gatewayId: string, callback: ServiceCallback<any>): void;
 }
 
 /**
