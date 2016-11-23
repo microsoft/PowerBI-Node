@@ -1394,7 +1394,7 @@
                     "type": "string",
                     "description": "The public key exponent"
                 },
-                "modulud": {
+                "modulus": {
                     "type": "string",
                     "description": "The public key  modulus"
                 }
@@ -1418,7 +1418,7 @@
                 },
                 "publicKey": {
                     "$ref": "#/definitions/GatewayPublicKey",
-                    "description": "The gateway name"
+                    "description": "The gateway public key"
                 }
             }
         },
