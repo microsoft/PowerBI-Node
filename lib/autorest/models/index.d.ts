@@ -328,7 +328,7 @@ export interface Workspace {
  * Odata response wrapper for a Power BI Gateways list
  * @member {string} [odatacontext]
  * 
- * @member {array} [value] The Gatewayss
+ * @member {array} [value] The Gateways
  * 
  */
 export interface ODataResponseListGateway {
@@ -347,11 +347,11 @@ export interface ODataResponseListGateway {
  * 
  * @member {string} [type] The gateway type
  * 
- * @member {object} [publicKey] The gateway name
+ * @member {object} [publicKey] The gateway public key
  * 
  * @member {string} [publicKey.exponent] The public key exponent
  * 
- * @member {string} [publicKey.modulud] The public key  modulus
+ * @member {string} [publicKey.modulus] The public key  modulus
  * 
  */
 export interface Gateway {
@@ -368,12 +368,12 @@ export interface Gateway {
  * A Power BI Gateway Public Key
  * @member {string} [exponent] The public key exponent
  * 
- * @member {string} [modulud] The public key  modulus
+ * @member {string} [modulus] The public key  modulus
  * 
  */
 export interface GatewayPublicKey {
     exponent?: string;
-    modulud?: string;
+    modulus?: string;
 }
 
 /**
@@ -422,4 +422,73 @@ export interface CreateGatewayRequest {
     publicKey?: string;
     annotation?: string;
     workspaces?: WorkspaceId[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublishDatasourceToGatewayRequest class.
+ * @constructor
+ * A Publish Datasource To Gateway Request
+ * @member {string} [dataSourceType] The datasource type
+ * 
+ * @member {string} [connectionDetails] The connection details
+ * 
+ * @member {object} [credentialDetails]
+ * 
+ * @member {string} [credentialDetails.credentials] The credentials
+ * 
+ * @member {string} [credentialDetails.credentialType] The connection type
+ * 
+ * @member {string} [credentialDetails.encryptedConnection] The encrypted
+ * connection
+ * 
+ * @member {string} [credentialDetails.encryptionAlgorithm] The encryption
+ * algorithm
+ * 
+ * @member {string} [credentialDetails.privacyLevel] The privacy level
+ * 
+ * @member {string} [dataSourceName] The datasource name
+ * 
+ */
+export interface PublishDatasourceToGatewayRequest {
+    dataSourceType?: string;
+    connectionDetails?: string;
+    credentialDetails?: CredentialDetails;
+    dataSourceName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CredentialDetails class.
+ * @constructor
+ * The credential details
+ * @member {string} [credentials] The credentials
+ * 
+ * @member {string} [credentialType] The connection type
+ * 
+ * @member {string} [encryptedConnection] The encrypted connection
+ * 
+ * @member {string} [encryptionAlgorithm] The encryption algorithm
+ * 
+ * @member {string} [privacyLevel] The privacy level
+ * 
+ */
+export interface CredentialDetails {
+    credentials?: string;
+    credentialType?: string;
+    encryptedConnection?: string;
+    encryptionAlgorithm?: string;
+    privacyLevel?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BindToGatewayRequest class.
+ * @constructor
+ * The Bind dataset to gateway request
+ * @member {string} [gatewayObjectId] The gateway id
+ * 
+ */
+export interface BindToGatewayRequest {
+    gatewayObjectId?: string;
 }
