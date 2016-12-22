@@ -14,24 +14,42 @@ export class PowerBIToken {
         };
     }
 
-    public static createReportEmbedToken(workspaceCollectionName: string, workspaceId: string, reportId: string, username: string = null, roles: string|string[] = null, expiration: Date = null): PowerBIToken {
+    public static createReportEmbedToken(workspaceCollectionName: string, workspaceId: string, reportId?: string, datasetId?: string, scopes: string|string[] = '', username: string = null, roles: string|string[] = null, expiration: Date = null): PowerBIToken {
         
-        if (roles && !username)
-        {
+        if (roles && !username) {
             throw new Error('Cannot have an empty or null Username claim with the non-empty Roles claim');
         }
         
+        if (!reportId && !datasetId) {
+            throw new Error('Token must contain either reportId or datasetId claim');
+        }
+
         var token = new PowerBIToken(expiration);
         token.addClaim('wcn', workspaceCollectionName);
         token.addClaim('wid', workspaceId);
-        token.addClaim('rid', reportId);
 
+        if (reportId) {
+            token.addClaim('rid', reportId);
+        }
+
+        if (datasetId) {
+            token.addClaim('did', datasetId);
+        }
+        
         if(username != null) {
             token.addClaim('username', username);
 
             if(roles != null) {
                 token.addClaim('roles', roles);
             }
+        }
+
+        if (scopes) {
+            if (Array.isArray(scopes)) {
+                scopes = (<string[]>scopes).join(' ');
+            }
+
+            token.addClaim('scp', scopes);
         }
 
         return token;
