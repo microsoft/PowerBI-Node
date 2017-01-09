@@ -43,7 +43,7 @@ Each API call sets the following HTTP header:
 
 ## Creating Embed Tokens
 Power BI Embedded uses embed token, which are HMAC signed JSON Web Tokens.  The tokens are signed with the access key from your Azure Power BI Embedded workspace collection.
-Embed tokens are used to provide read only access to a report to embed into an application.
+Embed tokens, by default, are used to provide read only access to a report to embed into an application.
 
 ### Required Claims
 - ver: 0.2.0
@@ -87,3 +87,45 @@ The following decoded JSON web token
   "nbf": 1360043456
 }
 ```
+
+## Adding Permission Scopes to Embed Tokens
+When using Embed tokens, one might want to restrict usage of the resources he gives access to. For this reason, you can generate a token with scoped permissions.
+
+### Required Claims - Scopes
+- scp: {scopesClaim}
+scopesClaim can be either a string or array of strings, noting the allowed permissions to workspace resources (Report, Dataset, etc.)
+
+```javascript
+var powerbi = require('powerbi-api');
+var reportReadScope = 'Report.Read';
+var token = powerbi.PowerBIToken.createReportEmbedToken('{WorkspaceCollection}', '{workspaceId}', '{reportId}', '{scopes}');
+
+var jwt = token.generate('{AccessKey}');
+```
+
+## Token Example - With Scopes
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsIndjbiI6IlN1cHBvcnREZW1vIiwid2lkIjoiY2E2NzViMTktNmMzYy00MDAzLTg4MDgtMWM3ZGRjNmJkODA5IiwicmlkIjoiOTYyNDFmMGYtYWJhZS00ZWE5LWEwNjUtOTNiNDI4ZWRkYjE3Iiwic2NwIjoiUmVwb3J0LlJlYWQiLCJpc3MiOiJQb3dlckJJU0RLIiwiYXVkIjoiaHR0cHM6Ly9hbmFseXNpcy53aW5kb3dzLm5ldC9wb3dlcmJpL2FwaSIsImV4cCI6MTM2MDA0NzA1NiwibmJmIjoxMzYwMDQzNDU2fQ.M1jkWXnkfwJeGQqh1x0vIAYB4EBKbHSZFoDB6n_LZyA
+
+### Decoded
+The following decoded JSON web token
+**Header**
+```javascript
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
+```
+
+**Payload**
+```javascript
+{
+  "ver": "0.2.0",
+  "wcn": "SupportDemo",
+  "wid": "ca675b19-6c3c-4003-8808-1c7ddc6bd809",
+  "rid": "96241f0f-abae-4ea9-a065-93b428eddb17",
+  "scp": "Report.Read",
+  "iss": "PowerBISDK",
+  "aud": "https://analysis.windows.net/powerbi/api",
+  "exp": 1360047056,
+  "nbf": 1360043456
+}
