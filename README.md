@@ -128,7 +128,7 @@ The following decoded JSON web token
   "aud": "https://analysis.windows.net/powerbi/api",
   "exp": 1360047056,
   "nbf": 1360043456
-}
+}```
 
 ## Available Permission Scopes
 
