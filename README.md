@@ -129,3 +129,18 @@ The following decoded JSON web token
   "exp": 1360047056,
   "nbf": 1360043456
 }
+
+## Available Permission Scopes
+
+**Dataset operations**
+"Dataset.Read" - Read only permissions to the designated dataset
+"Dataset.Write" - Write permissions to the designated dataset
+"Dataset.ReadWrite" - ReadWrite permissions to the designated dataset
+
+**Report operations**
+"Report.Read" - Read only permissions to the designated report
+"Report.ReadWrite" - ReadWrite permissions to the designated report
+
+**Workspace content operations**
+"Workspace.Report.Create" - Allows creation of a new report in the workspace
+"Workspace.Report.Copy" - Allows saving a copy of an existing report within a workspace
