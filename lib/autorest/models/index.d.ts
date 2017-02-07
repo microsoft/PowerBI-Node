@@ -315,8 +315,55 @@ export interface ODataResponseListWorkspace {
  * 
  * @member {string} [workspaceCollectionName] The workspace collection name
  * 
+ * @member {string} [displayName] The workspace display name
+ * 
  */
 export interface Workspace {
     workspaceId?: string;
     workspaceCollectionName?: string;
+    displayName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateWorkspaceRequest class.
+ * @constructor
+ * A Create Workspace Request
+ * @member {string} [name] The workspace name
+ * 
+ */
+export interface CreateWorkspaceRequest {
+    name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloneReportRequest class.
+ * @constructor
+ * Power BI Clone Report Request
+ * @member {string} [name] The requested report name
+ * 
+ * @member {string} [targetWorkspaceId] Optional parameter for specifying the
+ * target workspace id
+ * 
+ * @member {string} [targetModelId] Optional parameter for specifying the
+ * target associated model (dataset) id
+ * 
+ */
+export interface CloneReportRequest {
+    name?: string;
+    targetWorkspaceId?: string;
+    targetModelId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RebindReportRequest class.
+ * @constructor
+ * Power BI Rebind Report Request
+ * @member {string} [datasetId] The new dataset of the rebinded report
+ * 
+ */
+export interface RebindReportRequest {
+    datasetId?: string;
 }

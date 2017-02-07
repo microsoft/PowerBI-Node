@@ -17,7 +17,7 @@ import * as models from '../models';
 export interface Datasets {
 
     /**
-     * @summary Returns the EntitySet datasets
+     * @summary Returns the datasets
      *
      * @param {string} collectionName The workspace collection name
      * 
@@ -35,13 +35,13 @@ export interface Datasets {
     getDatasets(collectionName: string, workspaceId: string, callback: ServiceCallback<models.ODataResponseListDataset>): void;
 
     /**
-     * @summary Post a new entity to EntitySet datasets
+     * @summary Post a new entity to datasets
      *
      * @param {string} collectionName The workspace collection name
      * 
      * @param {string} workspaceId The workspace id
      * 
-     * @param {object} dataset The entity to post
+     * @param {object} dataset Create dataset parameters
      * 
      * @param {string} [dataset.id] The dataset id
      * 
@@ -257,8 +257,8 @@ export interface Datasets {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<any>): void;
+    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: any }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: any }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -401,13 +401,17 @@ export interface Workspaces {
      * 
      * @param {object} [options] Optional Parameters.
      * 
+     * @param {object} [options.workspaceRequest] The workspace requested to create
+     * 
+     * @param {string} [options.workspaceRequest.name] The workspace name
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    postWorkspace(collectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
+    postWorkspace(collectionName: string, options: { workspaceRequest? : models.CreateWorkspaceRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
     postWorkspace(collectionName: string, callback: ServiceCallback<models.Workspace>): void;
 }
 
@@ -436,4 +440,59 @@ export interface Reports {
      */
     getReports(collectionName: string, workspaceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ODataResponseListReport>): void;
     getReports(collectionName: string, workspaceId: string, callback: ServiceCallback<models.ODataResponseListReport>): void;
+
+    /**
+     * @summary Clones the specified report
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {string} workspaceId The workspace id
+     * 
+     * @param {string} reportKey The report id
+     * 
+     * @param {object} requestParameters Clone report parameters
+     * 
+     * @param {string} [requestParameters.name] The requested report name
+     * 
+     * @param {string} [requestParameters.targetWorkspaceId] Optional parameter
+     * for specifying the target workspace id
+     * 
+     * @param {string} [requestParameters.targetModelId] Optional parameter for
+     * specifying the target associated model (dataset) id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    cloneReport(collectionName: string, workspaceId: string, reportKey: string, requestParameters: models.CloneReportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Report>): void;
+    cloneReport(collectionName: string, workspaceId: string, reportKey: string, requestParameters: models.CloneReportRequest, callback: ServiceCallback<models.Report>): void;
+
+    /**
+     * @summary Rebinds the specified report to requested dataset id
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {string} workspaceId The workspace id
+     * 
+     * @param {string} reportKey The report id
+     * 
+     * @param {object} requestParameters Rebind report parameters
+     * 
+     * @param {string} [requestParameters.datasetId] The new dataset of the
+     * rebinded report
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    rebindReport(collectionName: string, workspaceId: string, reportKey: string, requestParameters: models.RebindReportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    rebindReport(collectionName: string, workspaceId: string, reportKey: string, requestParameters: models.RebindReportRequest, callback: ServiceCallback<any>): void;
 }
