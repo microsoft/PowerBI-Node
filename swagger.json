@@ -900,7 +900,7 @@
                 "deprecated": false
             }
         },
-            "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/reports/{reportKey}/Rebind": {
+        "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/reports/{reportKey}/Rebind": {
             "post": {
                 "tags": [
                     "Reports"
