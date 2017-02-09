@@ -7,11 +7,11 @@ please answer the following questions. put x inside [ ] (e.g. [x])
 ### What inside?
 - [ ] Bug Fixes?
 - [ ] New Features?
-- [ ] Documentation?
+- [x] Documentation?
 
 ### Is pull request totally generated from swagger file?
 - [ ] Yes.
 - [ ] No, part of it is auto-generated.
 
-### Backward compatibility
-- [ ] Pull Request contains backward compatibility breaks?
+### Backward compatibility break?
+- [ ] Yes. Pull request breaks backward compatibility!
