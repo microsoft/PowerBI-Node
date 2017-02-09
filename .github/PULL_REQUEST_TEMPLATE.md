@@ -15,3 +15,5 @@ please answer the following questions. put x inside [ ] (e.g. [x])
 
 ### Backward compatibility break?
 - [ ] Yes. Pull request breaks backward compatibility!
+
+[Learn more about backward compatibility.](BackwardCompatibility.md)
