@@ -8,17 +8,17 @@
     "schemes": [
         "https"
     ],
-    "consumes": [],
-    "produces": [],
+    "consumes": [ ],
+    "produces": [ ],
     "paths": {
         "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/datasets": {
             "get": {
                 "tags": [
                     "Datasets"
                 ],
-                "summary": "Returns the EntitySet datasets",
+                "summary": "Returns the datasets",
                 "operationId": "Datasets_GetDatasets",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -52,12 +52,12 @@
                 "tags": [
                     "Datasets"
                 ],
-                "summary": "Post a new entity to EntitySet datasets",
+                "summary": "Post a new entity to datasets",
                 "operationId": "Datasets_PostDataset",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -76,7 +76,7 @@
                     {
                         "name": "dataset",
                         "in": "body",
-                        "description": "The entity to post",
+                        "description": "Create dataset parameters",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/Dataset"
@@ -101,8 +101,8 @@
                 ],
                 "summary": "Posts new data rows into the specified table",
                 "operationId": "Datasets_PostRows",
-                "consumes": [],
-                "produces": [],
+                "consumes": [ ],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -158,8 +158,8 @@
                 ],
                 "summary": "Deletes all rows from the specified table",
                 "operationId": "Datasets_DeleteRows",
-                "consumes": [],
-                "produces": [],
+                "consumes": [ ],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -208,7 +208,7 @@
                 ],
                 "operationId": "Datasets_GetTables",
                 "summary": "Gets all tables within the specified dataset",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -253,8 +253,8 @@
                 ],
                 "operationId": "Datasets_PutTable",
                 "summary": "Updates a schema and metadata for the specified table",
-                "consumes": [],
-                "produces": [],
+                "consumes": [ ],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -312,7 +312,7 @@
                 ],
                 "operationId": "Datasets_GetDatasetById",
                 "summary": "Gets the dataset metadata for the specifeid dataset id",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -355,8 +355,8 @@
                 ],
                 "operationId": "Datasets_DeleteDatasetById",
                 "summary": "Deletes the dataset with the specified id",
-                "consumes": [],
-                "produces": [],
+                "consumes": [ ],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -398,7 +398,7 @@
                 ],
                 "operationId": "Datasets_GetGatewayDatasources",
                 "summary": "Gets a list of bound gateway datasources for the specified dataset",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -443,7 +443,7 @@
                 ],
                 "operationId": "Datasets_GetDatasources",
                 "summary": "Gets a list of datasource for the specified dataset",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -490,7 +490,7 @@
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -521,7 +521,7 @@
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
-                                "type": "string"
+                                "$ref": "#/definitions/Object"
                             }
                         }
                     }
@@ -547,7 +547,7 @@
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [],
+                "produces": [ ],
                 "parameters": [
                     {
                         "name": "collectionName",
@@ -605,7 +605,7 @@
                 ],
                 "summary": "Returns a list of imports for the specified workspace",
                 "operationId": "Imports_GetImports",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -672,9 +672,9 @@
                     {
                         "name": "nameConflict",
                         "in": "query",
-                        "required":  false,
+                        "required": false,
                         "description": "Determines what to do if a dataset with the same name already exists",
-                        "type":  "string"
+                        "type": "string"
                     },
                     {
                         "name": "importInfo",
@@ -703,7 +703,7 @@
                 ],
                 "summary": "Gets the import metadata for the specifed import id",
                 "operationId": "Imports_GetImportById",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -744,7 +744,7 @@
             "get": {
                 "summary": "Returns a list of workspaces for the specified collection",
                 "operationId": "Workspaces_GetWorkspacesByCollectionName",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -785,6 +785,15 @@
                         "required": true,
                         "description": "The workspace collection name",
                         "type": "string"
+                    },
+                    {
+                        "name": "workspaceRequest",
+                        "in": "body",
+                        "description": "The workspace requested to create",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/CreateWorkspaceRequest"
+                        }
                     }
                 ],
                 "responses": {
@@ -804,7 +813,7 @@
                 ],
                 "summary": "Gets a list of reports available within the specified workspace",
                 "operationId": "Reports_GetReports",
-                "consumes": [],
+                "consumes": [ ],
                 "produces": [
                     "application/json"
                 ],
@@ -829,6 +838,116 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/ODataResponse[List[Report]]"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/reports/{reportKey}/Clone": {
+            "post": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "Clones the specified report",
+                "operationId": "Reports_CloneReport",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "workspaceId",
+                        "in": "path",
+                        "required": true,
+                        "description": "The workspace id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "reportKey",
+                        "description": "The report id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "requestParameters",
+                        "description": "Clone report parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CloneReportRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Report"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/v1.0/collections/{collectionName}/workspaces/{workspaceId}/reports/{reportKey}/Rebind": {
+            "post": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "Rebinds the specified report to requested dataset id",
+                "operationId": "Reports_RebindReport",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "collectionName",
+                        "in": "path",
+                        "description": "The workspace collection name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "workspaceId",
+                        "in": "path",
+                        "required": true,
+                        "description": "The workspace id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "reportKey",
+                        "in": "path",
+                        "description": "The report id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "requestParameters",
+                        "description": "Rebind report parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RebindReportRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Object"
                         }
                     }
                 },
@@ -885,7 +1004,7 @@
         },
         "Object": {
             "type": "object",
-            "properties": {}
+            "properties": { }
         },
         "ODataResponse[List[Dataset]]": {
             "type": "object",
@@ -1187,12 +1306,54 @@
                 "workspaceCollectionName": {
                     "type": "string",
                     "description": "The workspace collection name"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The workspace display name"
+                }
+            }
+        },
+        "CreateWorkspaceRequest": {
+            "type": "object",
+            "description": "A Create Workspace Request",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The workspace name"
+                }
+            }
+        },
+        "CloneReportRequest": {
+            "type": "object",
+            "description": "Power BI Clone Report Request",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The requested report name"
+                },
+                "targetWorkspaceId": {
+                    "type": "string",
+                    "description": "Optional parameter for specifying the target workspace id"
+                },
+                "targetModelId": {
+                    "type": "string",
+                    "description": "Optional parameter for specifying the target associated model (dataset) id"
+                }
+            }
+        },
+        "RebindReportRequest": {
+            "type": "object",
+            "description": "Power BI Rebind Report Request",
+            "properties": {
+                "datasetId": {
+                    "type": "string",
+                    "description": "The new dataset of the rebinded report"
                 }
             }
         }
     },
-    "parameters": {},
-    "responses": {},
-    "security": [],
-    "tags": []
+    "parameters": { },
+    "responses": { },
+    "security": [ ],
+    "tags": [ ]
 }
