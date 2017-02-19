@@ -25,6 +25,7 @@ export class PowerBIToken {
         }
 
         var token = new PowerBIToken(expiration);
+	token.addClaim('type', 'embed');
         token.addClaim('wcn', workspaceCollectionName);
         token.addClaim('wid', workspaceId);
 
