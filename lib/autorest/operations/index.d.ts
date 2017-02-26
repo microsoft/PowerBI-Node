@@ -257,8 +257,8 @@ export interface Datasets {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: any }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: any }, callback: ServiceCallback<any>): void;
+    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    setAllConnections(collectionName: string, workspaceId: string, datasetKey: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<any>): void;
 }
 
 /**
