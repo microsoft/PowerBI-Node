@@ -527,7 +527,7 @@
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
-                                "$ref": "#/definitions/Object"
+                                "type": "string"
                             }
                         }
                     }
