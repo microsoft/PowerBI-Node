@@ -57,6 +57,9 @@ export interface Datasets {
      * @param {array} [dataset.datasources] The datasources associated with this
      * dataset
      * 
+     * @param {string} [dataset.defaultMode] The dataset mode or type. Possible
+     * values include: 'AsAzure', 'AsOnPrem', 'Push', 'Streaming', 'PushStreaming'
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -470,6 +473,26 @@ export interface Reports {
      */
     cloneReport(collectionName: string, workspaceId: string, reportKey: string, requestParameters: models.CloneReportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Report>): void;
     cloneReport(collectionName: string, workspaceId: string, reportKey: string, requestParameters: models.CloneReportRequest, callback: ServiceCallback<models.Report>): void;
+
+    /**
+     * @summary Deletes the specified report
+     *
+     * @param {string} collectionName The workspace collection name
+     * 
+     * @param {string} workspaceId The workspace id
+     * 
+     * @param {string} reportKey The report id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteReport(collectionName: string, workspaceId: string, reportKey: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteReport(collectionName: string, workspaceId: string, reportKey: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Rebinds the specified report to requested dataset id
