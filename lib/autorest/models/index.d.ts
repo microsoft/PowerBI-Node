@@ -68,6 +68,9 @@ export interface Report {
  * 
  * @member {array} [datasources] The datasources associated with this dataset
  * 
+ * @member {string} [defaultMode] The dataset mode or type. Possible values
+ * include: 'AsAzure', 'AsOnPrem', 'Push', 'Streaming', 'PushStreaming'
+ * 
  */
 export interface Dataset {
     id?: string;
@@ -76,6 +79,7 @@ export interface Dataset {
     tables: Table[];
     webUrl?: string;
     datasources?: Datasource[];
+    defaultMode?: string;
 }
 
 /**
