@@ -96,7 +96,7 @@ export class Imports implements operations.Imports {
         };
 
         // Create HTTP transport objects
-        var httpRequest = WebResource.post(requestUrl);
+        var httpRequest = new WebResource();
         httpRequest['url'] = requestUrl;
         httpRequest['method'] = 'POST';
         httpRequest['formData'] = formData;
@@ -106,7 +106,7 @@ export class Imports implements operations.Imports {
         if (options) {
             for (var headerName in options.customHeaders) {
                 if (options.customHeaders.hasOwnProperty(headerName)) {
-                    httpRequest.withHeader(headerName, options.customHeaders[headerName]);
+                    httpRequest[headerName] = options.customHeaders[headerName];
                 }
             }
         }
