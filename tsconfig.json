@@ -9,8 +9,5 @@
     },
     "exclude": [
         "node_modules",
-        "lib/autorest",
-        "typings/index.d.ts",
-        "typings/global"
-    ]
+        "lib/autorest"    ]
 }
