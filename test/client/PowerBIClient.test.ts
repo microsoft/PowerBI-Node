@@ -17,11 +17,12 @@ describe('Power BI API V2', () => {
     });
 
     var credentials = new msrest.TokenCredentials(accessKey, "AppKey");
-    var client = new powerbi.PowerBIClientV2(credentials);
+    var client = new powerbi.PowerBIClientV2(credentials, "https://api.powerbi.com/myorg");
 
     describe('Group class / operations', () => {
         it('can fetch workspaces/groups and one match with given id', () => {
             client.groups.getGroups().then((workspaces) => {
+                expect(workspaces).to.be.an("array")
                 expect(workspaces).to.include({id: workspaceId})
             })
         });
