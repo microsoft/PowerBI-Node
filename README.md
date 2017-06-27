@@ -26,6 +26,25 @@ client.workspaces.getWorkspacesByCollectionName('{WorkspaceCollection}', functio
 });
 ```
 
+## Usage of API V2
+In order to use the API V2 like in [C# lib](https://github.com/Microsoft/PowerBI-CSharp/tree/master/sdk/PowerBI.Api/Source/V2) and in the last PowerBI API [reference](https://msdn.microsoft.com/en-us/library/mt147898.aspx) you need to use the respective class as in the example below.
+```javascript
+var powerbi = require('powerbi-api');
+var msrest = require('ms-rest');
+
+var credentials = new msrest.TokenCredentials('{AccessKey}', "AppKey");
+var client = new powerbi.PowerBIClientV2(credentials); // checkout the name "PowerBIClientV2" 
+
+// Example API call
+client.groups.getGroups().then((workspaces) => {
+               // your code here
+               });
+
+// or with async/await in TypeScript...
+
+let myReport = await client.reports.getReport('{reportId}')
+```
+
 ### APIs
 The following APIs groups are available:
 - Datasets
@@ -59,6 +78,18 @@ var powerbi = require('powerbi-api');
 var token = powerbi.PowerBIToken.createReportEmbedToken('{WorkspaceCollection}', '{workspaceId}', '{reportId}');
 
 var jwt = token.generate('{AccessKey}');
+```
+
+In API V2:
+
+```javascript
+var powerbi = require('powerbi-api');
+var msrest = require('ms-rest');
+
+var credentials = new msrest.TokenCredentials('{AccessKey}', "AppKey");
+var client = new powerbi.PowerBIClientV2(credentials); // checkout the name "PowerBIClientV2"
+
+var generatedToken = client.reports.generateTokenInGroup('{workspaceId}','{reportId}');
 ```
 
 ## Token Example
