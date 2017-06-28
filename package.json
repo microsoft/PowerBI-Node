@@ -5,9 +5,9 @@
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "precontrib": "npm install -g typescript && npm install",
-    "contrib": "tsc",
-    "test": "mocha --recursive"
+    "precontrib": "npm install -g npm-run && npm install",
+    "contrib": "npm-run tsc",
+    "test": "npm-run mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "@types/node": "^8.0.3",
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
-    "typescript": "~2.3.4"
+    "typescript": "^2.3.4"
   },
   "directories": {
     "test": "test"
