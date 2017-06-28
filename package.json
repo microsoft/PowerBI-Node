@@ -32,10 +32,12 @@
   },
   "devDependencies": {
     "@types/chai": "^4.0.1",
+    "@types/chai-things": "0.0.32",
     "@types/jwt-simple": "^0.5.33",
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.3",
     "chai": "^3.5.0",
+    "chai-things": "^0.2.0",
     "mocha": "^2.4.5",
     "typescript": "~2.3.4"
   },
