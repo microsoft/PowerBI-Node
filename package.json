@@ -5,9 +5,9 @@
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "precontrib": "npm install -g npm-run && npm install",
-    "contrib": "npm-run tsc",
-    "test": "npm-run mocha --recursive"
+    "precontrib": "npm install",
+    "contrib": "tsc",
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
