@@ -5,12 +5,22 @@
         "allowJs": false,
         "declaration": true,
         "moduleResolution": "node",
-        "sourceMap": true
+        "sourceMap": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules"
+        ],
+        "types": [
+            "chai",
+            "chai-things",
+            "mocha",
+            "jwt-simple",
+            "node",
+            "moment"
+        ]
     },
     "exclude": [
         "node_modules",
-        "lib/autorest",
-        "typings/index.d.ts",
-        "typings/global"
+        "lib/autorest"
     ]
 }
