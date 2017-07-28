@@ -6,7 +6,7 @@
   "typings": "./lib/index.d.ts",
   "scripts": {
     "precontrib": "npm install",
-    "contrib": "tsc",
+    "contrib": "tsc -v && tsc",
     "test": "mocha --recursive"
   },
   "repository": {
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Microsoft/PowerBI-Node#readme",
   "dependencies": {
     "jwt-simple": "^0.5.0",
+    "moment": "^2.18.1",
     "ms-rest": "^2.2.0"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "@types/chai-things": "0.0.32",
     "@types/jwt-simple": "^0.5.33",
     "@types/mocha": "^2.2.41",
+    "@types/moment": "^2.13.0",
     "@types/node": "^8.0.3",
     "chai": "^3.5.0",
     "chai-things": "^0.2.0",

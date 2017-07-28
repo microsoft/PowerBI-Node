@@ -15,7 +15,8 @@
             "chai-things",
             "mocha",
             "jwt-simple",
-            "node"
+            "node",
+            "moment"
         ]
     },
     "exclude": [
