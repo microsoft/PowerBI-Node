@@ -1,13 +1,25 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es6",
+        "target": "es5",
         "allowJs": false,
         "declaration": true,
         "moduleResolution": "node",
-        "sourceMap": true
+        "sourceMap": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules"
+        ],
+        "types": [
+            "chai",
+            "chai-things",
+            "mocha",
+            "jwt-simple",
+            "node"
+        ]
     },
     "exclude": [
         "node_modules",
-        "lib/autorest"    ]
+        "lib/autorest"
+    ]
 }
