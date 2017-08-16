@@ -1,3 +1,8 @@
+# Deprecation Note
+Node SDK is not supported any more.
+If you want this library to continue to live, please vote to it in Power BI ideas:
+https://ideas.powerbi.com/forums/265200-power-bi-ideas/suggestions/20566726-power-bi-nodejs-sdk
+
 # PowerBI-Node
 Node SDK and client library for the Power BI Embedded REST APIs.
 
